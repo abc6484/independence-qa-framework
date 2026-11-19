@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="5" skipped="0" tests="34" time="0.908" timestamp="2026-11-19T18:51:38.548939+05:30" hostname="e2b.local"><testcase classname="tests.test_core" name="test_remote_targets_refused[https://example.com]" time="0.000" /><testcase classname="tests.test_core" name="test_remote_targets_refused[http://10.0.0.1:80]" time="0.000" /><testcase classname="tests.test_core" name="test_remote_targets_refused[http://127.0.0.1.example.com]" time="0.000" /><testcase classname="tests.test_core" name="test_remote_targets_refused[8.8.8.8:3550]" time="0.000" /><testcase classname="tests.test_core" name="test_remote_targets_refused[http://[::]:5000]" time="0.000" /><testcase classname="tests.test_core" name="test_loopback_allowed[http://127.0.0.1:5102]" time="0.000" /><testcase classname="tests.test_core" name="test_loopback_allowed[localhost:3550]" time="0.000" /><testcase classname="tests.test_core" name="test_loopback_allowed[http://[::1]:5013]" time="0.000" /><testcase classname="tests.test_core" name="test_contract_mutation_is_caught[{&quot;a&quot;:&quot;string&quot;}-{&quot;a&quot;:&quot;number&quot;}]" time="0.000" /><testcase classname="tests.test_core" name="test_contract_mutation_is_caught[type Query {a: String}-type Query {b: String}]" time="0.000" /><testcase classname="tests.test_core" name="test_proto_field_number_mutation_is_caught" time="0.004" /><testcase classname="tests.test_core" name="test_new_protocol_needs_no_core_change" time="0.000" /><testcase classname="tests.test_core" name="test_rest_redirect_style_path_refused" time="0.000" /><testcase classname="tests.test_regression" name="test_rest_contract" time="0.049" /><testcase classname="tests.test_regression" name="test_graphql_contract" time="0.520" /><testcase classname="tests.test_regression" name="test_grpc_contract" time="0.002" /><testcase classname="tests.test_regression" name="test_rest_login_and_me" time="0.017" /><testcase classname="tests.test_regression" name="test_rest_book_lifecycle" time="0.022" /><testcase classname="tests.test_regression" name="test_rest_anonymous_book_denied" time="0.002" /><testcase classname="tests.test_regression" name="test_rest_invalid_book_body" time="0.011" /><testcase classname="tests.test_regression" name="test_graphql_login_and_me" time="0.024" /><testcase classname="tests.test_regression" name="test_graphql_public_paste_roundtrip" time="0.025" /><testcase classname="tests.test_regression" name="test_graphql_rejects_invalid_operations[{fieldThatDoesNotExist}]" time="0.003" /><testcase classname="tests.test_regression" name="test_graphql_rejects_invalid_operations[query($id:Int!){paste(id:$id){title}}]" time="0.002" /><testcase classname="tests.test_regression" name="test_catalog_read_and_search" time="0.006" /><testcase classname="tests.test_regression" name="test_catalog_not_found[nonexistent-synthetic-id]" time="0.002" /><testcase classname="tests.test_regression" name="test_catalog_not_found[]" time="0.001" /><testcase classname="tests.test_regression" name="test_catalog_no_match" time="0.001" /><testcase classname="tests.test_regression" name="test_catalog_anonymous_read_is_intended" time="0.002" /><testcase classname="tests.test_security" name="test_rest_cross_user_book_secret_denied" time="0.026"><failure message="AssertionError: BUG-001: another account can read a private book secret&#10;assert 200 in (403, 404)&#10; +  where 200 = Result(status=200, data={'book_title': 'qa_bola_2154d19f78044e9f9028c8bd92eef820', 'owner': 'qa_e80c2fff9b12', 'secret': 'synthetic-owner-only'}, errors=[]).status">rest = &lt;qa.adapters.Rest object at 0x7f28f2687cd0&gt;
+
+    def test_rest_cross_user_book_secret_denied(rest):
+        _, owner = rest_account(rest)
+        _, attacker = rest_account(rest)
+        title = 'qa_bola_'+uuid4().hex
+        created = rest.call('/books/v1', {'book_title':title,'secret':'synthetic-owner-only'},method='POST',token=owner)
+        assert created.status == 200
+        positive = rest.call('/books/v1/'+title, token=owner)
+        assert positive.status == 200 and positive.data['secret'] == 'synthetic-owner-only'
+        observed = rest.call('/books/v1/'+title,token=attacker)
+&gt;       assert observed.status in (403,404), 'BUG-001: another account can read a private book secret'
+E       AssertionError: BUG-001: another account can read a private book secret
+E       assert 200 in (403, 404)
+E        +  where 200 = Result(status=200, data={'book_title': 'qa_bola_2154d19f78044e9f9028c8bd92eef820', 'owner': 'qa_e80c2fff9b12', 'secret': 'synthetic-owner-only'}, errors=[]).status
+
+tests/test_security.py:20: AssertionError</failure></testcase><testcase classname="tests.test_security" name="test_rest_registration_cannot_grant_admin" time="0.011"><failure message="AssertionError: BUG-002: self-registration grants admin privileges&#10;assert True is False">rest = &lt;qa.adapters.Rest object at 0x7f28f26713c0&gt;
+
+    def test_rest_registration_cannot_grant_admin(rest):
+        _, token = rest_account(rest, admin=True)
+        result = rest.call('/me',token=token)
+        assert result.status == 200
+&gt;       assert result.data['data']['admin'] is False, 'BUG-002: self-registration grants admin privileges'
+E       AssertionError: BUG-002: self-registration grants admin privileges
+E       assert True is False
+
+tests/test_security.py:27: AssertionError</failure></testcase><testcase classname="tests.test_security" name="test_rest_debug_does_not_expose_passwords" time="0.003"><failure message="AssertionError: BUG-003: anonymous debug response exposes passwords&#10;assert False&#10; +  where False = all(&lt;generator object test_rest_debug_does_not_expose_passwords.&lt;locals&gt;.&lt;genexpr&gt; at 0x7f28f26bdd20&gt;)">rest = &lt;qa.adapters.Rest object at 0x7f28f2694df0&gt;
+
+    def test_rest_debug_does_not_expose_passwords(rest):
+        result = rest.call('/users/v1/_debug')
+        if result.status == 200:
+            assert isinstance(result.data, dict) and isinstance(result.data.get('users'), list)
+&gt;           assert all('password' not in user for user in result.data['users']), 'BUG-003: anonymous debug response exposes passwords'
+E           AssertionError: BUG-003: anonymous debug response exposes passwords
+E           assert False
+E            +  where False = all(&lt;generator object test_rest_debug_does_not_expose_passwords.&lt;locals&gt;.&lt;genexpr&gt; at 0x7f28f26bdd20&gt;)
+
+tests/test_security.py:34: AssertionError</failure></testcase><testcase classname="tests.test_security" name="test_graphql_private_paste_not_anonymous" time="0.022"><failure message="AssertionError: BUG-004: anonymous caller reads a private paste&#10;assert ([] or not {'content': 'synthetic-private', 'public': False})&#10; +  where [] = Result(status=200, data={'paste': {'content': 'synthetic-private', 'public': False}}, errors=[]).errors&#10; +  and   {'content': 'synthetic-private', 'public': False} = &lt;built-in method get of dict object at 0x7f28f265e880&gt;('paste')&#10; +    where &lt;built-in method get of dict object at 0x7f28f265e880&gt; = ({'paste': {'content': 'synthetic-private', 'public': False}}).get&#10; +      where {'paste': {'content': 'synthetic-private', 'public': False}} = Result(status=200, data={'paste': {'content': 'synthetic-private', 'public': False}}, errors=[]).data">gql = &lt;qa.adapters.GraphQL object at 0x7f28f26724d0&gt;
+
+    def test_graphql_private_paste_not_anonymous(gql):
+        title = 'qa_private_'+uuid4().hex
+        created = gql.call('mutation($t:String!){createPaste(title:$t,content:"synthetic-private",public:false){paste{id}}}',{'t':title})
+        assert not created.errors, created
+        identifier = int(created.data['createPaste']['paste']['id'])
+        try:
+            result = gql.call('query($id:Int!){paste(id:$id){content public}}',{'id':identifier})
+            assert result.status in (200,401,403)
+&gt;           assert result.errors or not (result.data or {}).get('paste'), 'BUG-004: anonymous caller reads a private paste'
+E           AssertionError: BUG-004: anonymous caller reads a private paste
+E           assert ([] or not {'content': 'synthetic-private', 'public': False})
+E            +  where [] = Result(status=200, data={'paste': {'content': 'synthetic-private', 'public': False}}, errors=[]).errors
+E            +  and   {'content': 'synthetic-private', 'public': False} = &lt;built-in method get of dict object at 0x7f28f265e880&gt;('paste')
+E            +    where &lt;built-in method get of dict object at 0x7f28f265e880&gt; = ({'paste': {'content': 'synthetic-private', 'public': False}}).get
+E            +      where {'paste': {'content': 'synthetic-private', 'public': False}} = Result(status=200, data={'paste': {'content': 'synthetic-private', 'public': False}}, errors=[]).data
+
+tests/test_security.py:47: AssertionError</failure></testcase><testcase classname="tests.test_security" name="test_graphql_tampered_identity_token_rejected" time="0.024"><failure message="AssertionError: BUG-005: tampered token impersonates the seeded lab admin&#10;assert ([] or not {'username': 'admin'})&#10; +  where [] = Result(status=200, data={'me': {'username': 'admin'}}, errors=[]).errors&#10; +  and   {'username': 'admin'} = &lt;built-in method get of dict object at 0x7f28f262dbc0&gt;('me')&#10; +    where &lt;built-in method get of dict object at 0x7f28f262dbc0&gt; = ({'me': {'username': 'admin'}}).get&#10; +      where {'me': {'username': 'admin'}} = Result(status=200, data={'me': {'username': 'admin'}}, errors=[]).data">gql = &lt;qa.adapters.GraphQL object at 0x7f28f26c7610&gt;
+
+    def test_graphql_tampered_identity_token_rejected(gql):
+        user, token = graphql_account(gql)
+        # Establish a valid control first. Modify only a synthetic account token's identity;
+        # keep the old signature, proving signature verification is missing if accepted.
+        valid = gql.call('query($t:String!){me(token:$t){username}}', {'t':token})
+        assert not valid.errors and valid.data['me']['username'] == user['username']
+        header, payload, signature = token.split('.')
+        claims = json.loads(base64.urlsafe_b64decode(payload+'='*(-len(payload)%4)))
+        claims['identity'] = 'admin'  # seeded lab identity, not an external account
+        changed = base64.urlsafe_b64encode(json.dumps(claims).encode()).rstrip(b'=').decode()
+        forged = '.'.join((header,changed,signature))
+        result = gql.call('query($t:String!){me(token:$t){username}}', {'t':forged})
+&gt;       assert result.errors or not (result.data or {}).get('me'), 'BUG-005: tampered token impersonates the seeded lab admin'
+E       AssertionError: BUG-005: tampered token impersonates the seeded lab admin
+E       assert ([] or not {'username': 'admin'})
+E        +  where [] = Result(status=200, data={'me': {'username': 'admin'}}, errors=[]).errors
+E        +  and   {'username': 'admin'} = &lt;built-in method get of dict object at 0x7f28f262dbc0&gt;('me')
+E        +    where &lt;built-in method get of dict object at 0x7f28f262dbc0&gt; = ({'me': {'username': 'admin'}}).get
+E        +      where {'me': {'username': 'admin'}} = Result(status=200, data={'me': {'username': 'admin'}}, errors=[]).data
+
+tests/test_security.py:65: AssertionError</failure></testcase></testsuite></testsuites>

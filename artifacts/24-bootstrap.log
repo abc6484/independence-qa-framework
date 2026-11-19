@@ -1,0 +1,178 @@
+HEAD is now at f16052d Merge pull request #72 from aaronhmiller/master
+Requirement already satisfied: attrs==26.1.0 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 1)) (26.1.0)
+Requirement already satisfied: certifi==2026.10.23 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 2)) (2026.10.23)
+Requirement already satisfied: charset-normalizer==3.5.2 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 3)) (3.5.2)
+Requirement already satisfied: click==8.5.1 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 4)) (8.5.1)
+Requirement already satisfied: clickclick==20.10.2 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 5)) (20.10.2)
+Requirement already satisfied: connexion==2.14.2 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 6)) (2.14.2)
+Requirement already satisfied: Flask==2.2.2 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 7)) (2.2.2)
+Requirement already satisfied: Flask-SQLAlchemy==3.0.3 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 8)) (3.0.3)
+Requirement already satisfied: greenlet==3.5.6 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 9)) (3.5.6)
+Requirement already satisfied: idna==3.20 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 10)) (3.20)
+Requirement already satisfied: inflection==0.5.1 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 11)) (0.5.1)
+Requirement already satisfied: itsdangerous==2.2.0 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 12)) (2.2.0)
+Requirement already satisfied: Jinja2==3.1.6 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 13)) (3.1.6)
+Requirement already satisfied: jsonschema==4.17.3 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 14)) (4.17.3)
+Requirement already satisfied: MarkupSafe==2.1.2 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 15)) (2.1.2)
+Requirement already satisfied: packaging==26.3 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 16)) (26.3)
+Requirement already satisfied: PyJWT==2.6.0 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 17)) (2.6.0)
+Requirement already satisfied: pyrsistent==0.20.0 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 18)) (0.20.0)
+Requirement already satisfied: PyYAML==6.0.3 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 19)) (6.0.3)
+Requirement already satisfied: requests==2.34.2 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 20)) (2.34.2)
+Requirement already satisfied: SQLAlchemy==2.0.2 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 21)) (2.0.2)
+Requirement already satisfied: swagger-ui-bundle==0.0.9 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 22)) (0.0.9)
+Requirement already satisfied: typing_extensions==4.16.0 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 23)) (4.16.0)
+Requirement already satisfied: urllib3==2.8.0 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 24)) (2.8.0)
+Requirement already satisfied: Werkzeug==2.2.2 in ./.lab/vampi-env/lib/python3.10/site-packages (from -r /downloads/independence-qa/scripts/vampi.lock (line 25)) (2.2.2)
+HEAD is now at a961308 Update README.md
+Collecting Flask-Sockets@ git+https://github.com/dolevf/flask-sockets@513caf69a053a53c35110a389c9b0d83b2a9d99b
+  Cloning https://github.com/dolevf/flask-sockets (to revision 513caf69a053a53c35110a389c9b0d83b2a9d99b) to /tmp/pip-install-p23_y6dz/flask-sockets_96b673f44ae34d56afa1b7b2bd413ad8
+  Running command git clone --filter=blob:none --quiet https://github.com/dolevf/flask-sockets /tmp/pip-install-p23_y6dz/flask-sockets_96b673f44ae34d56afa1b7b2bd413ad8
+  Running command git rev-parse -q --verify 'sha^513caf69a053a53c35110a389c9b0d83b2a9d99b'
+  Running command git fetch -q https://github.com/dolevf/flask-sockets 513caf69a053a53c35110a389c9b0d83b2a9d99b
+  Resolved https://github.com/dolevf/flask-sockets to commit 513caf69a053a53c35110a389c9b0d83b2a9d99b
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting aniso8601==7.0.0
+  Downloading aniso8601-7.0.0-py2.py3-none-any.whl (42 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.0/42.0 KB 7.3 MB/s eta 0:00:00
+Collecting attrs==22.1.0
+  Downloading attrs-22.1.0-py2.py3-none-any.whl (58 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.8/58.8 KB 9.2 MB/s eta 0:00:00
+Collecting bidict==0.22.0
+  Downloading bidict-0.22.0-py3-none-any.whl (36 kB)
+Collecting certifi==2022.12.7
+  Downloading certifi-2022.12.7-py3-none-any.whl (155 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 155.3/155.3 KB 6.6 MB/s eta 0:00:00
+Collecting charset-normalizer==2.1.1
+  Downloading charset_normalizer-2.1.1-py3-none-any.whl (39 kB)
+Collecting click==8.1.3
+  Downloading click-8.1.3-py3-none-any.whl (96 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.6/96.6 KB 8.2 MB/s eta 0:00:00
+Collecting exceptiongroup==1.0.4
+  Downloading exceptiongroup-1.0.4-py3-none-any.whl (14 kB)
+Collecting Flask==2.2.2
+  Downloading Flask-2.2.2-py3-none-any.whl (101 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 101.5/101.5 KB 8.2 MB/s eta 0:00:00
+Collecting Flask-GraphQL==2.0.1
+  Downloading Flask-GraphQL-2.0.1.tar.gz (6.1 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting Flask-GraphQL-Auth==1.3.3
+  Downloading Flask-GraphQL-Auth-1.3.3.tar.gz (5.8 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting Flask-SocketIO==5.3.2
+  Downloading Flask_SocketIO-5.3.2-py3-none-any.whl (17 kB)
+Collecting Flask-SQLAlchemy==3.0.2
+  Downloading Flask_SQLAlchemy-3.0.2-py3-none-any.whl (24 kB)
+Collecting gevent==22.10.2
+  Downloading gevent-22.10.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.4/6.4 MB 151.2 MB/s eta 0:00:00
+Collecting gevent-websocket==0.10.1
+  Downloading gevent_websocket-0.10.1-py3-none-any.whl (22 kB)
+Collecting graphene==2.1.9
+  Downloading graphene-2.1.9-py2.py3-none-any.whl (107 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 107.4/107.4 KB 593.1 MB/s eta 0:00:00
+Collecting graphene-sqlalchemy==2.3.0
+  Downloading graphene_sqlalchemy-2.3.0-py2.py3-none-any.whl (38 kB)
+Collecting graphql-core==2.3.2
+  Downloading graphql_core-2.3.2-py2.py3-none-any.whl (252 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 252.5/252.5 KB 593.3 MB/s eta 0:00:00
+Collecting graphql-relay==2.0.1
+  Downloading graphql_relay-2.0.1-py3-none-any.whl (20 kB)
+Collecting graphql-server-core==1.2.0
+  Downloading graphql-server-core-1.2.0.tar.gz (7.0 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting graphql-ws==0.4.4
+  Downloading graphql_ws-0.4.4-py2.py3-none-any.whl (17 kB)
+Collecting greenlet==2.0.1
+  Downloading greenlet-2.0.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (539 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 539.9/539.9 KB 156.4 MB/s eta 0:00:00
+Collecting h11==0.14.0
+  Downloading h11-0.14.0-py3-none-any.whl (58 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.3/58.3 KB 412.9 MB/s eta 0:00:00
+Collecting idna==3.4
+  Downloading idna-3.4-py3-none-any.whl (61 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.5/61.5 KB 493.0 MB/s eta 0:00:00
+Collecting iniconfig==1.1.1
+  Downloading iniconfig-1.1.1-py2.py3-none-any.whl (5.0 kB)
+Collecting itsdangerous==2.1.2
+  Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+Collecting Jinja2==3.1.2
+  Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 KB 552.9 MB/s eta 0:00:00
+Collecting MarkupSafe==2.1.1
+  Downloading MarkupSafe-2.1.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Collecting packaging==22.0
+  Downloading packaging-22.0-py3-none-any.whl (42 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.6/42.6 KB 416.6 MB/s eta 0:00:00
+Collecting pluggy==1.0.0
+  Downloading pluggy-1.0.0-py2.py3-none-any.whl (13 kB)
+Collecting promise==2.3
+  Downloading promise-2.3.tar.gz (19 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting PyJWT==2.0.1
+  Downloading PyJWT-2.0.1-py3-none-any.whl (15 kB)
+Collecting pytest==7.2.0
+  Downloading pytest-7.2.0-py3-none-any.whl (316 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 316.8/316.8 KB 633.0 MB/s eta 0:00:00
+Collecting python-engineio==4.3.4
+  Downloading python_engineio-4.3.4-py3-none-any.whl (52 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 52.9/52.9 KB 445.4 MB/s eta 0:00:00
+Collecting python-socketio==5.7.2
+  Downloading python_socketio-5.7.2-py3-none-any.whl (56 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.7/56.7 KB 423.3 MB/s eta 0:00:00
+Collecting requests==2.28.1
+  Downloading requests-2.28.1-py3-none-any.whl (62 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.8/62.8 KB 497.4 MB/s eta 0:00:00
+Collecting Rx==1.6.1
+  Downloading Rx-1.6.1-py2.py3-none-any.whl (179 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 179.4/179.4 KB 544.8 MB/s eta 0:00:00
+Collecting simple-websocket==0.9.0
+  Downloading simple_websocket-0.9.0-py3-none-any.whl (7.3 kB)
+Collecting singledispatch==3.7.0
+  Downloading singledispatch-3.7.0-py2.py3-none-any.whl (9.2 kB)
+Collecting six==1.16.0
+  Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting SQLAlchemy==1.4.44
+  Downloading SQLAlchemy-1.4.44-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 225.7 MB/s eta 0:00:00
+Collecting tomli==2.0.1
+  Downloading tomli-2.0.1-py3-none-any.whl (12 kB)
+Collecting urllib3==1.26.13
+  Downloading urllib3-1.26.13-py2.py3-none-any.whl (140 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 140.6/140.6 KB 588.1 MB/s eta 0:00:00
+Collecting Werkzeug==2.2.2
+  Downloading Werkzeug-2.2.2-py3-none-any.whl (232 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 232.7/232.7 KB 621.6 MB/s eta 0:00:00
+Collecting wsproto==1.2.0
+  Downloading wsproto-1.2.0-py3-none-any.whl (24 kB)
+Collecting zope.event==4.5.0
+  Downloading zope.event-4.5.0-py2.py3-none-any.whl (6.8 kB)
+Collecting zope.interface==5.5.2
+  Downloading zope.interface-5.5.2-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (258 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 258.9/258.9 KB 74.2 MB/s eta 0:00:00
+Requirement already satisfied: setuptools in ./.lab/dvga-env/lib/python3.10/site-packages (from gevent==22.10.2->-r /downloads/independence-qa/scripts/dvga.lock (line 14)) (59.6.0)
+Using legacy 'setup.py install' for Flask-GraphQL, since package 'wheel' is not installed.
+Using legacy 'setup.py install' for Flask-GraphQL-Auth, since package 'wheel' is not installed.
+Using legacy 'setup.py install' for graphql-server-core, since package 'wheel' is not installed.
+Using legacy 'setup.py install' for promise, since package 'wheel' is not installed.
+Using legacy 'setup.py install' for Flask-Sockets, since package 'wheel' is not installed.
+Installing collected packages: Rx, iniconfig, aniso8601, zope.interface, zope.event, urllib3, tomli, six, python-engineio, PyJWT, pluggy, packaging, MarkupSafe, itsdangerous, idna, h11, greenlet, exceptiongroup, click, charset-normalizer, certifi, bidict, attrs, wsproto, Werkzeug, SQLAlchemy, singledispatch, requests, python-socketio, pytest, promise, Jinja2, gevent, simple-websocket, graphql-core, gevent-websocket, Flask, graphql-ws, graphql-server-core, graphql-relay, Flask-SQLAlchemy, Flask-Sockets, Flask-SocketIO, graphene, Flask-GraphQL, graphene-sqlalchemy, Flask-GraphQL-Auth
+  Running setup.py install for promise: started
+  Running setup.py install for promise: finished with status 'done'
+  Running setup.py install for graphql-server-core: started
+  Running setup.py install for graphql-server-core: finished with status 'done'
+  Running setup.py install for Flask-Sockets: started
+  Running setup.py install for Flask-Sockets: finished with status 'done'
+  Running setup.py install for Flask-GraphQL: started
+  Running setup.py install for Flask-GraphQL: finished with status 'done'
+  Running setup.py install for Flask-GraphQL-Auth: started
+  Running setup.py install for Flask-GraphQL-Auth: finished with status 'done'
+Successfully installed Flask-2.2.2 Flask-GraphQL-2.0.1 Flask-GraphQL-Auth-1.3.3 Flask-SQLAlchemy-3.0.2 Flask-SocketIO-5.3.2 Flask-Sockets-0.2.1.1 Jinja2-3.1.2 MarkupSafe-2.1.1 PyJWT-2.0.1 Rx-1.6.1 SQLAlchemy-1.4.44 Werkzeug-2.2.2 aniso8601-7.0.0 attrs-22.1.0 bidict-0.22.0 certifi-2022.12.7 charset-normalizer-2.1.1 click-8.1.3 exceptiongroup-1.0.4 gevent-22.10.2 gevent-websocket-0.10.1 graphene-2.1.9 graphene-sqlalchemy-2.3.0 graphql-core-2.3.2 graphql-relay-2.0.1 graphql-server-core-1.2.0 graphql-ws-0.4.4 greenlet-2.0.1 h11-0.14.0 idna-3.4 iniconfig-1.1.1 itsdangerous-2.1.2 packaging-22.0 pluggy-1.0.0 promise-2.3 pytest-7.2.0 python-engineio-4.3.4 python-socketio-5.7.2 requests-2.28.1 simple-websocket-0.9.0 singledispatch-3.7.0 six-1.16.0 tomli-2.0.1 urllib3-1.26.13 wsproto-1.2.0 zope.event-4.5.0 zope.interface-5.5.2
+Cloning into '/downloads/independence-qa/.lab/boutique'...
+HEAD is now at 5b608cb1 Release v0.10.7
+Setup complete. Run: python scripts/run_lab.py

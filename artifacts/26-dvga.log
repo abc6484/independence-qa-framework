@@ -1,0 +1,24 @@
+Reconstructing Database
+Populating Database
+done
+ * Serving Flask app 'app'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5013
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [19/Nov/2026 18:51:39] "POST /graphql HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2026 18:51:39] "POST /graphql HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2026 18:51:39] "POST /graphql HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2026 18:51:39] "POST /graphql HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2026 18:51:39] "POST /graphql HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2026 18:51:39] "POST /graphql HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2026 18:51:39] "POST /graphql HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2026 18:51:39] "[31m[1mPOST /graphql HTTP/1.1[0m" 400 -
+127.0.0.1 - - [19/Nov/2026 18:51:39] "[31m[1mPOST /graphql HTTP/1.1[0m" 400 -
+127.0.0.1 - - [19/Nov/2026 18:51:39] "POST /graphql HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2026 18:51:39] "POST /graphql HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2026 18:51:39] "POST /graphql HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2026 18:51:39] "POST /graphql HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2026 18:51:39] "POST /graphql HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2026 18:51:39] "POST /graphql HTTP/1.1" 200 -
+127.0.0.1 - - [19/Nov/2026 18:51:39] "POST /graphql HTTP/1.1" 200 -

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="3" time="0.072" timestamp="2026-11-19T18:51:39.713832+05:30" hostname="e2b.local"><testcase classname="tests.test_security" name="test_rest_cross_user_book_secret_denied" time="0.033" /><testcase classname="tests.test_security" name="test_rest_registration_cannot_grant_admin" time="0.010" /><testcase classname="tests.test_security" name="test_rest_debug_does_not_expose_passwords" time="0.003"><failure message="AssertionError: BUG-003: anonymous debug response exposes passwords&#10;assert False&#10; +  where False = all(&lt;generator object test_rest_debug_does_not_expose_passwords.&lt;locals&gt;.&lt;genexpr&gt; at 0x7f9a8aaf1af0&gt;)">rest = &lt;qa.adapters.Rest object at 0x7f9a8aaa33d0&gt;
+
+    def test_rest_debug_does_not_expose_passwords(rest):
+        result = rest.call('/users/v1/_debug')
+        if result.status == 200:
+            assert isinstance(result.data, dict) and isinstance(result.data.get('users'), list)
+&gt;           assert all('password' not in user for user in result.data['users']), 'BUG-003: anonymous debug response exposes passwords'
+E           AssertionError: BUG-003: anonymous debug response exposes passwords
+E           assert False
+E            +  where False = all(&lt;generator object test_rest_debug_does_not_expose_passwords.&lt;locals&gt;.&lt;genexpr&gt; at 0x7f9a8aaf1af0&gt;)
+
+tests/test_security.py:34: AssertionError</failure></testcase></testsuite></testsuites>

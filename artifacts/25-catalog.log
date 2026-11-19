@@ -1,0 +1,5 @@
+{"message":"Tracing disabled.","severity":"info","timestamp":"2026-11-19T18:51:38.053808275+05:30"}
+{"message":"Profiling disabled.","severity":"info","timestamp":"2026-11-19T18:51:38.05386431+05:30"}
+{"message":"starting grpc server at :3550","severity":"info","timestamp":"2026-11-19T18:51:38.05402658+05:30"}
+{"message":"loading catalog from local products.json file...","severity":"info","timestamp":"2026-11-19T18:51:38.054237146+05:30"}
+{"message":"successfully parsed product catalog json","severity":"info","timestamp":"2026-11-19T18:51:38.054504045+05:30"}
