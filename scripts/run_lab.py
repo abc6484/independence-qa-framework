@@ -61,9 +61,9 @@ def main():
             with urllib.request.urlopen(f'http://127.0.0.1:{port}/createdb',timeout=5) as response:
                 assert response.status == 200
         env = {**os.environ,'QA_SOURCE_ROOT':str(lab)}
-        common = [sys.executable,'-m','pytest','--self-contained-html']
-        first = subprocess.run(common+['tests','--junitxml=artifacts/all-apis.xml','--html=artifacts/all-apis.html'],cwd=ROOT,env=env)
-        second = subprocess.run(common+['tests/test_security.py','-k','rest_', '--vampi-url=http://127.0.0.1:5101',
+        common = [sys.executable,'-m','qa']
+        first = subprocess.run(common+['--junitxml=artifacts/all-apis.xml','--html=artifacts/all-apis.html'],cwd=ROOT,env=env)
+        second = subprocess.run(common+['--modules','test_security','-k','rest_','--vampi-url=http://127.0.0.1:5101',
                                       '--junitxml=artifacts/secure-mode.xml','--html=artifacts/secure-mode.html'],cwd=ROOT,env=env)
         return max(first.returncode,second.returncode)
     finally:
