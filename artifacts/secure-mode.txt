@@ -1,0 +1,6 @@
+PASSED  test_rest_cross_user_book_secret_denied
+PASSED  test_rest_registration_cannot_grant_admin
+FAILED  test_rest_debug_does_not_expose_passwords
+        AssertionError: BUG-003: anonymous debug response exposes passwords
+
+2 passed, 1 failed
