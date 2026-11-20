@@ -1,6 +1,6 @@
 # One test framework for three teams' APIs
 
-A single pytest framework that tests a REST API (VAmPI), a GraphQL API (DVGA) and a
+A single plain-Python framework (no test framework; a small runner in `qa/runner.py`) that tests a REST API (VAmPI), a GraphQL API (DVGA) and a
 gRPC service (Online Boutique product catalog) through one small adapter seam, with
 contract-drift detection, a risk-rated regression model, security tests that fail on
 the holes they find, and one report across all three APIs.
@@ -114,7 +114,7 @@ debug endpoint is exposed in either mode.
   deliberately does not weaponize the lab's own attack endpoints; five access-control and
   token findings were enough to demonstrate the pack.
 - No load gate yet. First next step: a 30-second per-API latency baseline with a release
-  threshold, wired as another marker in the same suite.
+  threshold, wired as another tag in the same suite.
 - No mutation/fuzz testing; property-based generators per adapter would be the second next step.
 
 ## Where AI was used
@@ -130,4 +130,4 @@ security tests.
 ## Growing to 50 APIs / 10 teams
 
 See `docs/DESIGN.md` (the 2-page note): adapter-per-protocol with config-per-API, contract
-baselines owned by each team, and the same pytest markers as the organization-wide risk model.
+baselines owned by each team, and the same tags (`@check(...)`) as the organization-wide risk model.
