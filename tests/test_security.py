@@ -2,12 +2,12 @@
 from uuid import uuid4
 import base64
 import json
-import pytest
+from qa.runner import check
 from qa.auth import rest_account, graphql_account
 
-pytestmark = [pytest.mark.integration, pytest.mark.security, pytest.mark.risk_high]
 
 
+@check('integration', 'security', 'risk_high')
 def test_rest_cross_user_book_secret_denied(rest):
     _, owner = rest_account(rest)
     _, attacker = rest_account(rest)
@@ -20,6 +20,7 @@ def test_rest_cross_user_book_secret_denied(rest):
     assert observed.status in (403,404), 'BUG-001: another account can read a private book secret'
 
 
+@check('integration', 'security', 'risk_high')
 def test_rest_registration_cannot_grant_admin(rest):
     _, token = rest_account(rest, admin=True)
     result = rest.call('/me',token=token)
@@ -27,6 +28,7 @@ def test_rest_registration_cannot_grant_admin(rest):
     assert result.data['data']['admin'] is False, 'BUG-002: self-registration grants admin privileges'
 
 
+@check('integration', 'security', 'risk_high')
 def test_rest_debug_does_not_expose_passwords(rest):
     result = rest.call('/users/v1/_debug')
     if result.status == 200:
@@ -36,6 +38,7 @@ def test_rest_debug_does_not_expose_passwords(rest):
         assert result.status in (401,403,404), 'Unexpected debug-endpoint error is not evidence of protection'
 
 
+@check('integration', 'security', 'risk_high')
 def test_graphql_private_paste_not_anonymous(gql):
     title = 'qa_private_'+uuid4().hex
     created = gql.call('mutation($t:String!){createPaste(title:$t,content:"synthetic-private",public:false){paste{id}}}',{'t':title})
@@ -50,6 +53,7 @@ def test_graphql_private_paste_not_anonymous(gql):
         assert not cleanup.errors
 
 
+@check('integration', 'security', 'risk_high')
 def test_graphql_tampered_identity_token_rejected(gql):
     user, token = graphql_account(gql)
     # Establish a valid control first. Modify only a synthetic account token's identity;
