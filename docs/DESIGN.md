@@ -45,9 +45,9 @@ framework earns its keep.
   existing tests.
 - **Teams own their baselines and their domain tests; the platform owns the seam.**
   Contract files and feature tests live in each team's directory and run in the same
-  pytest session; markers (`risk_high`, `security`, `contract`) let CI slice the run:
+  one runner session; tags (`risk_high`, `security`, `contract`) let CI slice the run:
   PRs run their API's high-risk tests, nightly runs everything.
-- **One report, many suites.** pytest's JUnit/HTML output already aggregates across
+- **One report, many suites.** the runner's JUnit/HTML output already aggregates across
   adapters; at 50 APIs the same artifacts fan out per team dashboard without new tooling.
 - **Isolation scales the same way.** Each API gets its own process/port/env the way this
   repo already runs two VAmPI variants; `bootstrap.py`'s pinned-commit + clean-checkout
