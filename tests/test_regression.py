@@ -1,32 +1,28 @@
 from pathlib import Path
 from uuid import uuid4
-import pytest
 from jsonschema import validate
+from qa.runner import check, CONFIG
 from qa.auth import rest_account, graphql_account
 from qa.contracts import rest_contract, graphql_contract, proto_contract
 
-pytestmark = pytest.mark.integration
 
 
-@pytest.mark.contract
-@pytest.mark.risk_high
+@check('integration', 'contract', 'risk_high')
 def test_rest_contract(rest):
     rest_contract(rest)
 
 
-@pytest.mark.contract
-@pytest.mark.risk_high
+@check('integration', 'contract', 'risk_high')
 def test_graphql_contract(gql):
     graphql_contract(gql)
 
 
-@pytest.mark.contract
-@pytest.mark.risk_high
-def test_grpc_contract(request):
-    proto_contract(Path(request.config.getoption('--source-root'))/'boutique/protos/demo.proto')
+@check('integration', 'contract', 'risk_high')
+def test_grpc_contract():
+    proto_contract(Path(CONFIG['source_root']) / 'boutique/protos/demo.proto')
 
 
-@pytest.mark.risk_high
+@check('integration', 'risk_high')
 def test_rest_login_and_me(rest):
     user, token = rest_account(rest)
     response = rest.call('/me', token=token)
@@ -36,7 +32,7 @@ def test_rest_login_and_me(rest):
         'properties':{'username':{'const':user['username']},'email':{'const':user['email']},'admin':{'type':'boolean'}}}}})
 
 
-@pytest.mark.risk_high
+@check('integration', 'risk_high')
 def test_rest_book_lifecycle(rest):
     user, token = rest_account(rest)
     title = 'qa_'+uuid4().hex
@@ -48,19 +44,19 @@ def test_rest_book_lifecycle(rest):
     assert duplicate.status == 400
 
 
-@pytest.mark.risk_high
+@check('integration', 'risk_high')
 def test_rest_anonymous_book_denied(rest):
     response = rest.call('/books/v1/no-such-synthetic-book')
     assert response.status == 401
 
 
-@pytest.mark.risk_medium
+@check('integration', 'risk_medium')
 def test_rest_invalid_book_body(rest):
     _, token = rest_account(rest)
     assert rest.call('/books/v1', {}, method='POST',token=token).status == 400
 
 
-@pytest.mark.risk_high
+@check('integration', 'risk_high')
 def test_graphql_login_and_me(gql):
     user, token = graphql_account(gql)
     response = gql.call('query($t:String!){me(token:$t){username}}', {'t':token})
@@ -68,7 +64,7 @@ def test_graphql_login_and_me(gql):
     assert response.data['me']['username'] == user['username']
 
 
-@pytest.mark.risk_high
+@check('integration', 'risk_high')
 def test_graphql_public_paste_roundtrip(gql):
     title = 'qa_'+uuid4().hex
     created = gql.call('mutation($t:String!){createPaste(title:$t,content:"synthetic body",public:true){paste{id title}}}', {'t':title})
@@ -83,14 +79,13 @@ def test_graphql_public_paste_roundtrip(gql):
         assert not cleanup.errors and cleanup.data['deletePaste']['result'] is True
 
 
-@pytest.mark.risk_medium
-@pytest.mark.parametrize('query', ['{fieldThatDoesNotExist}', 'query($id:Int!){paste(id:$id){title}}'])
-def test_graphql_rejects_invalid_operations(gql, query):
-    response = gql.call(query)
-    assert response.status in (200,400) and response.errors
+@check('integration', 'risk_medium', cases=['{fieldThatDoesNotExist}', 'query($id:Int!){paste(id:$id){title}}'])
+def test_graphql_rejects_invalid_operations(gql, case):
+    response = gql.call(case)
+    assert response.status in (200, 400) and response.errors
 
 
-@pytest.mark.risk_high
+@check('integration', 'risk_high')
 def test_catalog_read_and_search(catalog):
     listed = catalog.call('ListProducts')
     assert listed.status == 'OK' and len(listed.data['products']) > 0
@@ -103,21 +98,20 @@ def test_catalog_read_and_search(catalog):
     assert search.status == 'OK' and first['id'] in {p['id'] for p in search.data['results']}
 
 
-@pytest.mark.risk_medium
-@pytest.mark.parametrize('identifier', ['nonexistent-synthetic-id',''])
-def test_catalog_not_found(catalog, identifier):
-    response = catalog.call('GetProduct', {'id':identifier})
+@check('integration', 'risk_medium', cases=['nonexistent-synthetic-id', ''])
+def test_catalog_not_found(catalog, case):
+    response = catalog.call('GetProduct', {'id': case})
     assert response.status == 'NOT_FOUND'
 
 
-@pytest.mark.risk_medium
+
+@check('integration', 'risk_medium')
 def test_catalog_no_match(catalog):
     result = catalog.call('SearchProducts', {'query':'qa_no_match_'+uuid4().hex})
     assert result.status == 'OK' and result.data.get('results',[]) == []
 
 
-@pytest.mark.security
-@pytest.mark.risk_medium
+@check('integration', 'security', 'risk_medium')
 def test_catalog_anonymous_read_is_intended(catalog):
     # No inter-service auth is part of this lab's stated architecture, not an invented bug.
     assert catalog.call('ListProducts').status == 'OK'
